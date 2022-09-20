@@ -134,9 +134,9 @@ def saveProductTitle(productList):
         productSheet.write(index + 1, 3, productList[index].deals)
         productSheet.write(index + 1, 4, productList[index].orders)
         productSheet.write(index + 1, 5, productList[index].rating)
-        productSheet.write(index + 1, 5, productList[index].freight)
-        productSheet.write(index + 1, 5, productList[index].store)
-        productSheet.write(index + 1, 5, productList[index].link)
+        productSheet.write(index + 1, 6, productList[index].freight)
+        productSheet.write(index + 1, 7, productList[index].store)
+        productSheet.write(index + 1, 8, productList[index].link)
     productSheet.write(
         0, 0, "total count:" + str(len(productList)))
     productSheet.write(
