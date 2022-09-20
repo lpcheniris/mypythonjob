@@ -52,6 +52,5 @@ def wordNgrams(titleList=[], fileName=PRODUCT_LIST_TITLE_NGRAMS):
 def main():
     listTitles = getTitlesFromExcel(PRODUCT_LIST_INFO_PATH)
     wordNgrams(listTitles, PRODUCT_LIST_TITLE_NGRAMS)
-
-
+    
 main()
