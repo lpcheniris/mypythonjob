@@ -1,5 +1,6 @@
 
 from ctypes.wintypes import PINT
+from tokenize import Number, String
 from bs4 import BeautifulSoup
 import os
 import xlwt as xt
@@ -101,7 +102,17 @@ def getProductListFromFiles():
 def saveProductTitle(productList):
     book = xt.Workbook(encoding='utf-8', style_compression=0)
     productSheet = book.add_sheet("Product", cell_overwrite_ok=True)
+    sumPrice = 0
+    sumOrders = 0
+    sumAd = 0
     for index in range(len(productList)):
+
+        sumPrice = sumPrice + float(str(productList[index].price).replace("US $", ""))
+        if productList[index].orders != "" :
+            sumOrders = sumOrders + int(str(productList[index].orders).replace(" sold", ""))         
+        if productList[index].ad != "" : 
+            sumAd = sumAd + 1 
+
         productSheet.write(index + 1, 0, productList[index].title)
         productSheet.write(index + 1, 1, productList[index].price)
         productSheet.write(index + 1, 2, productList[index].ad)
@@ -110,6 +121,9 @@ def saveProductTitle(productList):
         productSheet.write(index + 1, 5, productList[index].rating)
         productSheet.write(index + 1, 5, productList[index].freight)
         productSheet.write(index + 1, 5, productList[index].rating)
+    productSheet.write(0, 1, "avg:" + str(round(sumPrice / len(productList), 2)))
+    productSheet.write(0, 2, "total ad rate:" + str(round(sumAd / len(productList), 2) * 100) + "%")
+    productSheet.write(0, 4, "total order:" + str(sumOrders))
     book.save(PRODUCT_LIST_INFO_PATH)
 
 

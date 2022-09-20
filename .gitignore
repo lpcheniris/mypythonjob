@@ -9,6 +9,10 @@ AliExpress/ResultData/ProductImage/*
 AliExpress/aliexpresslist/OriginalData/*
 AliExpress/aliexpresslist/ResultsData/*
 
+Aliexpresslist/OriginalData/*
+Aliexpresslist/ResultsData/*
+
+.DS_Store
 1688Data/1688/*
 1688Data/ResultData/*
 
