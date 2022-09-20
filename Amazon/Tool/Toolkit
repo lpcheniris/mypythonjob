@@ -1,0 +1,36 @@
+from bs4 import BeautifulSoup
+
+# import json
+NOT_CAPITALIZE = ["or", "and", "with"]
+
+
+def getHtml(file="./ForToolKit.html"):
+    soup = BeautifulSoup(open(file, "r", encoding='utf-8'), 'html.parser')
+    words = soup.select("p")[0].text.replace("\n", " ")
+    return words.replace("  ", "").split(" ")
+
+
+def CapitalizeTitle(wordsList):
+    titleString = ""
+    for item in wordsList:
+        conversion = item
+        if item not in NOT_CAPITALIZE:
+            item = str.lower(item)
+            conversion = item.capitalize()
+        titleString = titleString + conversion + " "
+    titleString = titleString.replace("|", "\n")
+    return {
+        "words": titleString,
+        "wordsLength": str(len(titleString)),
+        "words36": titleString[0:36]
+    }
+
+
+def main():
+    wordsList = getHtml()
+    # wordsList = list(set(wordsList))
+    wordInfo = CapitalizeTitle(wordsList)
+    # print(wordInfo["words"].replace(" ", "\n"))
+    print(wordInfo["words"] + "\n" + wordInfo["wordsLength"] + "\n" + wordInfo["words36"])
+
+main()
