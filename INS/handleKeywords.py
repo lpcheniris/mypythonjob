@@ -5,7 +5,7 @@ import xlrd as xd
 from nltk.util import ngrams
 import math
 import random
-TAGCLASS = "architecture_models"
+TAGCLASS = "chinese_hanfu"
 EXCELNAME = os.path.dirname(__file__)+ "/keyWords.xls"
 KEYWORDSFIELD = os.path.dirname(__file__)+ "/keywords.text"
 KEYWORDJSON = os.path.dirname(__file__)+ "/keywords.json"
@@ -88,7 +88,7 @@ def getJsonFromExcel(filePath):
             kwArray.append({"word": keywordsSheet.row_values(rowIndex)[0], "count":keywordsSheet.row_values(rowIndex)[1], "chinese":keywordsSheet.row_values(rowIndex)[2], "rootWord":keywordsSheet.row_values(rowIndex)[3]})
         return kwArray
 def main():
-    # generate data
+     # generate data
     #  fileContent = getfile(KEYWORDSFIELD)
     #  keyWordsArray = prepareData(fileContent)
     #  putWordsToExcel(keyWordsArray, EXCELNAME)

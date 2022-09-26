@@ -121,7 +121,7 @@ def saveProductTitle(productList):
     for index in range(len(productList)):
         if productList[index].price != "":
             sumPrice = sumPrice + \
-                float(str(productList[index].price).replace("US $", ""))
+                float(str(productList[index].price).replace("US $", "").replace(",", ""))
         if productList[index].orders != "":
             sumOrders = sumOrders + \
                 int(str(productList[index].orders).replace(" sold", ""))
